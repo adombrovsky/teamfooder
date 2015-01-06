@@ -1,0 +1,17 @@
+<tr>
+    <th>User name</th>
+    <th>Food Count</th>
+    <th>Total Price</th>
+    <th>Actions</th>
+</tr>
+{{#users}}
+    <tr>
+        <td>{{user.name}}</td>
+        <td>{{totalCount}}</td>
+        <td>{{totalPrice}}</td>
+        <td style="width: 200px;">
+            <a href="/orders/view/{{orderId}}/edit/{{user.id}}" class="btn btn-primary">View</a>
+            {{#is_owner}}<button class="btn btn-danger remove-request" data-user-id="{{user.id}}">Cancel</button>{{/is_owner}}
+        </td>
+    </tr>
+{{/users}}

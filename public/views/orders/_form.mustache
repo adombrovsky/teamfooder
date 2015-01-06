@@ -1,0 +1,41 @@
+<div>
+    <p class="lead">Please fill this form to create new food request</p>
+    {{#model.id}}
+        <form role="form" action="/dev/orders/{{model.id}}" method="PUT">
+    {{/model.id}}
+    {{^model.id}}
+        <form role="form" action="/dev/orders" method="POST">
+    {{/model.id}}
+        <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{model.title}}" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label for="name">Restaurant</label>
+            <select {{#model.id}}disabled="disabled" {{/model.id}} id="chosen" name="restaurant_id">
+                {{#restaurants}}
+                    <option value="{{id}}">{{title}}</option>
+                {{/restaurants}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="email">Description</label>
+            <textarea class="form-control" id="description" name="description" placeholder="Enter description">{{model.description}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="date">End date</label>
+            <div class='input-group date' id='datetimepicker1'>
+                <input type="text" class="form-control" id="date" name="date" placeholder="Enter end time" value="{{model.parserDate}}">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div data-bypass="true" class="btn btn-primary google-import" data-href="{{loginUrl.google}}">Invite Some Friends</div>
+        </div>
+        <div id="friends-list" style="height: 300px; overflow-y: scroll"></div>
+
+        <span id="create_request_button" class="btn btn-default">Submit</span>
+    </form>
+</div>

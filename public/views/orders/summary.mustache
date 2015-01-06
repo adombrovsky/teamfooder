@@ -1,0 +1,58 @@
+<div id="order_info" class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <h2>{{order.title}}
+            <small class="pull-right" style="color:white">{{order.parserDate}}</small>
+        </h2>
+        <div>Created by {{order.owner.name}}</div>
+    </div>
+    {{#order.description}}
+        <div class="panel-body">
+            <p>{{order.description}}</p>
+        </div>
+    {{/order.description}}
+    <!-- List group -->
+    <h3>Order summary by user</h3>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th>User name</th>
+                <th>User order cost</th>
+            </tr>
+            {{#usersList}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{cost}}</td>
+                </tr>
+            {{/usersList}}
+        </table>
+    </div>
+    <!-- List group -->
+    <h3>Order summary by meal</h3>
+    <div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Meal name</th>
+                <th>Meal image</th>
+                <th>Meal amount</th>
+                <th>Meal price</th>
+                <th>Meal cost</th>
+            </tr>
+            {{#mealList}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td><img src="{{imageUrl}}" style="width: 100px;"></td>
+                    <td>{{count}}</td>
+                    <td>{{price}}</td>
+                    <td>{{cost}}</td>
+                </tr>
+            {{/mealList}}
+        </table>
+    </div>
+    {{^order.hideManageButtons}}
+    <div>
+        &nbsp;<button class="btn btn-success" data-id="{{order.id}}" id="finish-request">Finish request</button>
+    </div>
+    {{/order.hideManageButtons}}
+    <br/>
+</div>

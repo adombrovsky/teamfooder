@@ -1,0 +1,29 @@
+<td>{{userName}}</td>
+<td>
+    <div class="row">
+        <div class="col-md-5"><strong>Title</strong></div>
+        <div class="col-md-2"><strong>Price</strong></div>
+        <div class="col-md-2"><strong>Count</strong></div>
+        <div class="col-md-2"><strong>Sum</strong></div>
+    </div>
+    <br/>
+    {{#meal}}
+        <div class="row">
+            <div class="col-md-5">{{title}}</div>
+            <div class="col-md-2">{{price}}</div>
+            <div class="col-md-2">{{count}}</div>
+            <div class="col-md-2">{{sum}}</div>
+        </div>
+    {{/meal}}
+    <br/>
+    <div class="row">
+        <div class="col-md-5"><strong>Total:</strong></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"><strong>{{totalCount}}</strong></div>
+        <div class="col-md-2"><strong>{{totalSum}}</strong></div>
+    </div>
+</td>
+<td style="width: 200px;">
+    <a href="/orders/view/{{orderId}}/edit" class="btn btn-primary">Edit</a>
+    <!--<a href="#" class="btn btn-danger">Cancel</a>-->
+</td>

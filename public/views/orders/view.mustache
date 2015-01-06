@@ -1,0 +1,18 @@
+<div id="order_info" class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <h2>{{order.title}}
+            <small class="pull-right" style="color:white">{{order.parserDate}}</small>
+        </h2>
+        <div>Created by {{order.owner.name}}</div>
+    </div>
+    {{#order.description}}
+        <div class="panel-body">
+            <p>{{order.description}}</p>
+        </div>
+    {{/order.description}}
+    <!-- List group -->
+    <div>&nbsp;<a class="btn btn-success" href="/orders/view/{{order.id}}/edit/{{order.user_id}}">Add food request</a></div>
+    <br/>
+    <div id="userList"></div>
+</div>

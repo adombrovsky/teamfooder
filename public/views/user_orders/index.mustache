@@ -1,0 +1,70 @@
+{{#model}}
+    <div>
+        <p class="lead">List of {{userName}}'s food</p>
+        {{^onlyRead}}
+        <div class="row new-meal-block">
+            <div class="col-xs-6">
+                <label>
+                    Select food you want:
+                    <select id="chosen" name="test">
+                        {{#mealList}}
+                            <optgroup style="color: #d9534f" label="{{title}}">
+                                {{#meals}}
+                                <option data-id="{{id}}" data-href="{{mealUrl}}" data-image="{{imageUrl}}" data-name="{{title}}" data-order_id="{{orderId}}" data-description="{{description}}" data-price="{{price}}" value="{{id}}">{{title}}</option>
+                                {{/meals}}
+                            </optgroup>
+                        {{/mealList}}
+                    </select>
+                </label>
+            </div>
+            <div class="">
+                <label for="inputEmail3">
+                    Amount:
+                    <input type="number" value="1" class="" id="amount" min="1">
+                </label>
+                <button id="add_meal" class="btn btn-success btn-xs">Add</button>
+            </div>
+        </div>
+        {{/onlyRead}}
+        <div class="mainData">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Food name</th>
+                    <th>Image</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th>Total Price</th>
+                    {{^onlyRead}}
+                        <th>Actions</th>
+                    {{/onlyRead}}
+                </tr>
+                {{#meal}}
+                    <tr>
+                        <td>{{title}}</td>
+                        <td><img src="{{imageUrl}}" style="width: 100px"></td>
+                        <td>{{count}}</td>
+                        <td>{{price}}</td>
+                        <td>{{sum}}</td>
+                        {{^onlyRead}}
+                        <td>
+                            <button data-amount="1" data-id="{{userOrderID}}" class="btn btn-success update_amount">+1</button>
+                            <button data-amount="-1" data-id="{{userOrderID}}" class="btn btn-warning update_amount">-1</button>
+                            <button data-id="{{userOrderID}}"  class="btn btn-danger remove_meal">Remove</button>
+                        </td>
+                        {{/onlyRead}}
+                    </tr>
+                {{/meal}}
+                <tr>
+                    <td><strong>Total:</strong></td>
+                    <td><strong>{{totalCount}}</strong></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>{{totalSum}}</strong></td>
+                    {{^onlyRead}}
+                        <td></td>
+                    {{/onlyRead}}
+                </tr>
+            </table>
+        </div>
+    </div>
+{{/model}}

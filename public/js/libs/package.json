@@ -1,0 +1,12 @@
+{
+    "name": "nettuts-laravel4-and-backbone",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "underscore": "*",
+        "backbone": "*",
+        "mustache": "0.7.2",
+        "moment": "*",
+        "chosen-jquery-browserify": "*"
+    }
+}

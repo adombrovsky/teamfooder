@@ -1,0 +1,29 @@
+{{#exists}}
+    <form action="/dev/users/{{ user.id }}" method="post">
+        <input type="hidden" name="_method" value="PUT" />
+{{/exists}}
+{{^exists}}
+    <form action="/dev/users" method="post">
+{{/exists}}
+
+    <fieldset>
+
+        <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                <input type="text" name="name" value="{{ user.name }}" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+                <input type="text" name="email" value="{{ user.email }}" />
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="submit" class="btn btn-primary" value="Save" />
+        </div>
+
+    </fieldset>
+</form>

@@ -1,0 +1,20 @@
+<td>{{ title }}</td>
+<td><a target="_blank" data-bypass="true" href="{{ restaurant.url }}">{{ restaurant.title }}</a></td>
+<td>{{ parserDate }}</td>
+<td>{{ owner.name }}</td>
+<td>{{description}}</td>
+<td>{{usersCount}}</td>
+<td style="width: 90px;">{{statusName}}</td>
+<td style="width: 250px;">
+    {{^hideManageButtons}}
+    <a href="/orders/view/{{id}}" class="btn btn-sm btn-info">Join</a>
+    {{#is_owner}}
+        <a href="/orders/summary/{{id}}" class="btn btn-sm btn-success">Complete</a>
+        <a href="/orders/edit/{{id}}" class="btn btn-sm btn-primary">Edit</a>
+        <a data-id="{{id}}" class="deny_order_status btn btn-sm btn-danger">Deny</a>
+    {{/is_owner}}
+    {{/hideManageButtons}}
+    {{#hideManageButtons}}
+    <a href="/orders/summary/{{id}}" class="btn btn-sm btn-success">View Summary</a>
+    {{/hideManageButtons}}
+</td>

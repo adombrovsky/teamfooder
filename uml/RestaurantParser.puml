@@ -1,0 +1,152 @@
+@startuml
+title Restaurants Parser Diagram
+interface IRestaurantParser {
+    + void   __construct(IProductParser $productParser, ICategoryParser $categoryParser)
+    + void   parse()
+    + string getMainHost()
+}
+
+class RikshaRestaurantParser      implements IRestaurantParser {
+      string MAIN_HOST
+    - HtmlDom $htmlDom
+    - IProductParser $productParser
+    - ICategoryParser $categoryParser
+}
+class StarPizzaRestaurantParser   implements IRestaurantParser {
+      string MAIN_HOST
+    - HtmlDom $htmlDom
+    - IProductParser $productParser
+    - ICategoryParser $categoryParser
+}
+
+class PizzaOdUaRestaurantParser   implements IRestaurantParser {
+      string MAIN_HOST
+    - HtmlDom $htmlDom
+    - IProductParser $productParser
+    - ICategoryParser $categoryParser
+}
+
+class EcoSushiRestaurantParser    implements IRestaurantParser {
+      string MAIN_HOST
+    - HtmlDom $htmlDom
+    - IProductParser $productParser
+    - ICategoryParser $categoryParser
+}
+
+interface IProductParser {
+    + array  parse(HtmlDom $htmlDom)
+
+    + float  getPrice(Htmldomnode $dom)
+
+    + string getTitle(Htmldomnode $dom)
+    + string getUrl(Htmldomnode $dom)
+    + string getImage(Htmldomnode $dom)
+    + string getCategory(Htmldomnode $dom)
+    + string getDescription(Htmldomnode $dom)
+}
+
+class RikshaProductParser implements IProductParser {
+    - HtmlDom $htmlDom
+    + string PRODUCT_LIST_PATH
+    + string TITLE_PATH
+    + string PRICE_PATH
+    + string URL_PATH
+    + string IMAGE_PATH
+    + string CATEGORY_PATH
+    + string DESCRIPTION_PATH
+
+}
+
+class StarPizzaProductParser implements IProductParser {
+    - HtmlDom $htmlDom
+    + string PRODUCT_LIST_PATH
+    + string TITLE_PATH
+    + string PRICE_PATH
+    + string URL_PATH
+    + string IMAGE_PATH
+    + string CATEGORY_PATH
+    + string DESCRIPTION_PATH
+
+}
+
+class PizzaOdUaProductParser implements IProductParser {
+    - HtmlDom $htmlDom
+    + string PRODUCT_LIST_PATH
+    + string TITLE_PATH
+    + string PRICE_PATH
+    + string URL_PATH
+    + string IMAGE_PATH
+    + string CATEGORY_PATH
+    + string DESCRIPTION_PATH
+
+}
+
+class EcoSushiProductParser implements IProductParser {
+    - HtmlDom $htmlDom
+    + string PRODUCT_LIST_PATH
+    + string TITLE_PATH
+    + string PRICE_PATH
+    + string URL_PATH
+    + string IMAGE_PATH
+    + string CATEGORY_PATH
+    + string DESCRIPTION_PATH
+
+}
+
+interface ICategoryParser {
+    + array  parse(HtmlDom $htmlDom)
+
+    + string getTitle(Htmldomnode $htmlDom)
+    + string getUrl(Htmldomnode $htmlDom)
+}
+
+class RikshaCategoryParser implements ICategoryParser {
+    - HtmlDom $htmlDom
+    + string CATEGORY_LIST_PATH
+    + string TITLE_PATH
+    + string URL_PATH
+}
+
+class StarPizzaCategoryParser implements ICategoryParser {
+    - HtmlDom $htmlDom
+    + string CATEGORY_LIST_PATH
+    + string TITLE_PATH
+    + string URL_PATH
+}
+
+class PizzaOdUaCategoryParser implements ICategoryParser {
+    - HtmlDom $htmlDom
+    + string CATEGORY_LIST_PATH
+    + string TITLE_PATH
+    + string URL_PATH
+}
+
+class EcoSushiCategoryParser implements ICategoryParser {
+    - HtmlDom $htmlDom
+    + string CATEGORY_LIST_PATH
+    + string TITLE_PATH
+    + string URL_PATH
+}
+
+abstract class AbstractRestaurantFactory {
+    + {abstract} IRestaurantParser getRestaurantParser(IProductParser $productParser, ICategoryParser $categoryParser);
+    + {abstract} IProductParser    getProductParser();
+    + {abstract} ICategoryParser   getCategoryParser();
+}
+
+class RikshaRestaurantFactory extends AbstractRestaurantFactory {
+
+}
+
+class StarPizzaRestaurantFactory extends AbstractRestaurantFactory {
+
+}
+
+class PizzaOdUaRestaurantFactory extends AbstractRestaurantFactory {
+
+}
+
+class EcoSushiRestaurantFactory extends AbstractRestaurantFactory {
+
+}
+@enduml
